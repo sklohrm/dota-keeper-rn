@@ -25,7 +25,7 @@ export default class MatchRow extends React.Component {
   };
 
   render() {
-    const {key, match, onSelectMatch} = this.props;
+    const {match, onSelectMatch} = this.props;
     return (
       <View>
         <TouchableOpacity onPress={() => onSelectMatch(match)}>
