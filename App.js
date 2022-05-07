@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import heroes from 'dotaconstants/build/heroes.json';
 import ExamplePlayers from './Examples/ExamplePlayers';
 import ExampleMatches from './Examples/ExampleMatches';
+import ExampleMatchDetails from './Examples/ExampleMatchDetails';
 
 import {
   SafeAreaView,
@@ -23,9 +22,9 @@ import {
   View,
 } from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Search from './screens/Search';
 import Matches from './screens/Matches';
+import MatchDetail from './screens/MatchDetail';
 
 export default class App extends React.Component {
   state = {
@@ -33,6 +32,7 @@ export default class App extends React.Component {
     player: {},
     matches: ExampleMatches,
     match: {},
+    matchDetails: ExampleMatchDetails,
     currentScreen: 'players',
   };
 
@@ -46,11 +46,21 @@ export default class App extends React.Component {
   onSelectMatch = match => {
     this.setState({
       match: match,
+      currentScreen: 'matchDetails',
+    });
+  };
+
+  onPressBackButton = toScreen => {
+    this.setState({
+      currentScreen: toScreen,
+      player: {},
+      match: {},
     });
   };
 
   render() {
-    const {players, player, matches, match, currentScreen} = this.state;
+    const {players, player, matches, match, matchDetails, currentScreen} =
+      this.state;
 
     let screen;
     switch (currentScreen) {
@@ -64,8 +74,21 @@ export default class App extends React.Component {
         break;
       case 'matches':
         screen = (
-          <Matches matches={matches} onSelectMatch={this.onSelectMatch} />
+          <Matches
+            matches={matches}
+            onSelectMatch={this.onSelectMatch}
+            onPressBackButton={this.onPressBackButton}
+          />
         );
+        break;
+      case 'matchDetails':
+        screen = (
+          <MatchDetail
+            matchDetails={matchDetails}
+            onPressBackButton={this.onPressBackButton}
+          />
+        );
+        break;
       default:
         break;
     }
@@ -79,9 +102,3 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({});
-
-// {
-//   /* <SafeAreaView>
-
-//         </SafeAreaView> */
-// }

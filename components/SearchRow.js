@@ -16,6 +16,10 @@ export default class SearchRow extends React.Component {
         <TouchableOpacity onPress={() => onSelectPlayer(player)}>
           <Text>{player.account_id}</Text>
           <Text>{player.personaname}</Text>
+          <Image
+            source={{uri: player.avatarfull}}
+            style={{width: 40, height: 40}}
+          />
         </TouchableOpacity>
       </View>
     );
