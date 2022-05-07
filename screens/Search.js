@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, Image, View, StyleSheet, ScrollView} from 'react-native';
+import {View} from 'react-native';
 
 import SearchList from '../components/SearchList';
 

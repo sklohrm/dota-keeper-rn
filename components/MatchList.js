@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, Image, View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 
 import MatchRow from './MatchRow';
 
@@ -9,7 +9,7 @@ export default class MatchList extends React.Component {
 
     return (
       <View>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
           {matches.map(match => {
             return (
               <MatchRow
@@ -24,3 +24,7 @@ export default class MatchList extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  scrollView: {backgroundColor: '#DCDCDC'},
+});

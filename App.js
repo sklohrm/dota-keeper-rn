@@ -12,15 +12,7 @@ import ExamplePlayers from './Examples/ExamplePlayers';
 import ExampleMatches from './Examples/ExampleMatches';
 import ExampleMatchDetails from './Examples/ExampleMatchDetails';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 
 import Search from './screens/Search';
 import Matches from './screens/Matches';
@@ -33,20 +25,20 @@ export default class App extends React.Component {
     matches: ExampleMatches,
     match: {},
     matchDetails: ExampleMatchDetails,
-    currentScreen: 'players',
+    currentScreen: 'Players',
   };
 
   onSelectPlayer = player => {
     this.setState({
       player: player,
-      currentScreen: 'matches',
+      currentScreen: 'Matches',
     });
   };
 
   onSelectMatch = match => {
     this.setState({
       match: match,
-      currentScreen: 'matchDetails',
+      currentScreen: 'Details',
     });
   };
 
@@ -67,12 +59,12 @@ export default class App extends React.Component {
       case '':
         screen = <Text>Hello World!</Text>;
         break;
-      case 'players':
+      case 'Players':
         screen = (
           <Search players={players} onSelectPlayer={this.onSelectPlayer} />
         );
         break;
-      case 'matches':
+      case 'Matches':
         screen = (
           <Matches
             matches={matches}
@@ -81,7 +73,7 @@ export default class App extends React.Component {
           />
         );
         break;
-      case 'matchDetails':
+      case 'Details':
         screen = (
           <MatchDetail
             matchDetails={matchDetails}
@@ -100,5 +92,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});

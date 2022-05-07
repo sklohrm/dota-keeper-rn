@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, Image, View, StyleSheet, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, ScrollView} from 'react-native';
 
 import SearchRow from './SearchRow';
 
@@ -9,7 +9,10 @@ export default class SearchList extends React.Component {
 
     return (
       <View>
-        <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Players</Text>
+        </View>
+        <ScrollView style={styles.scrollView}>
           {players.map(player => {
             return (
               <SearchRow
@@ -24,3 +27,9 @@ export default class SearchList extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  scrollView: {backgroundColor: '#DCDCDC'},
+  container: {paddingLeft: 10},
+  title: {fontWeight: 'bold', fontSize: 28},
+});

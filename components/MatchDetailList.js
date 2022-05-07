@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, Image, View, StyleSheet, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, ScrollView} from 'react-native';
 
 import MatchDetailRow from './MatchDetailRow';
 
@@ -9,9 +9,8 @@ export default class MatchDetailList extends React.Component {
 
     return (
       <View>
-        <ScrollView>
-          <Text>{matchDetails.radiant_win ? 'Radiant' : 'Dire'} Victory</Text>
-          <Text>Radiant</Text>
+        <ScrollView style={styles.scrollView}>
+          <Text style={styles.radiantText}>Radiant</Text>
           {matchDetails.players.map(player => {
             return (
               player.isRadiant && (
@@ -19,7 +18,7 @@ export default class MatchDetailList extends React.Component {
               )
             );
           })}
-          <Text>Dire</Text>
+          <Text style={styles.direText}>Dire</Text>
           {matchDetails.players.map(player => {
             return (
               !player.isRadiant && (
@@ -27,8 +26,29 @@ export default class MatchDetailList extends React.Component {
               )
             );
           })}
+          <Text style={{height: 200}}></Text>
         </ScrollView>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: '#DCDCDC',
+  },
+  radiantText: {
+    paddingTop: 10,
+    paddingLeft: 15,
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'green',
+  },
+  direText: {
+    paddingTop: 10,
+    paddingLeft: 15,
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'red',
+  },
+});
