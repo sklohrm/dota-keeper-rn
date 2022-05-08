@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Text,
-  Image,
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, Image, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class SearchRow extends React.Component {
   convertMatchTime = (time, format) => {

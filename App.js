@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import heroes from 'dotaconstants/build/heroes.json';
+
 import ExamplePlayers from './Examples/ExamplePlayers';
 import ExampleMatches from './Examples/ExampleMatches';
 import ExampleMatchDetails from './Examples/ExampleMatchDetails';
@@ -56,9 +56,6 @@ export default class App extends React.Component {
 
     let screen;
     switch (currentScreen) {
-      case '':
-        screen = <Text>Hello World!</Text>;
-        break;
       case 'Players':
         screen = (
           <Search players={players} onSelectPlayer={this.onSelectPlayer} />

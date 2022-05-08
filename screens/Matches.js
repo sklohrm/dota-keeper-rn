@@ -6,7 +6,6 @@ import BackButton from '../utils/BackButton';
 
 export default class Matches extends React.Component {
   render() {
-    console.log(typeof onPressBackButton);
     const {matches, onSelectMatch, onPressBackButton} = this.props;
     return (
       <View>

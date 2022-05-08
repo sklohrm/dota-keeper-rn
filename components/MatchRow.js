@@ -22,7 +22,7 @@ export default class MatchRow extends React.Component {
     );
   };
 
-  builtHeroIconURI = playerHeroID => {
+  buildHeroIconURI = playerHeroID => {
     endpoint =
       Object.values(heroes).find(hero => hero.id === playerHeroID)?.img ?? '';
     return 'http://cdn.dota2.com' + endpoint;
@@ -66,7 +66,7 @@ export default class MatchRow extends React.Component {
           <View style={styles.row}>
             <View style={styles.statsContainer}>
               <Image
-                source={{uri: this.builtHeroIconURI(match.hero_id)}}
+                source={{uri: this.buildHeroIconURI(match.hero_id)}}
                 style={styles.image}
               />
               <View style={styles.statsCol}>

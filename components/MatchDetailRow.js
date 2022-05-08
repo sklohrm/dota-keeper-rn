@@ -5,7 +5,7 @@ import items from 'dotaconstants/build/items.json';
 import heroes from 'dotaconstants/build/heroes.json';
 
 export default class MatchDetailRow extends React.Component {
-  builtHeroIconURI = playerHeroID => {
+  buildHeroIconURI = playerHeroID => {
     endpoint =
       Object.values(heroes).find(hero => hero.id === playerHeroID)?.icon ?? '';
     return 'http://cdn.dota2.com' + endpoint;
@@ -14,7 +14,6 @@ export default class MatchDetailRow extends React.Component {
   buildItemURI = playerItem => {
     endpoint =
       Object.values(items).find(item => item.id === playerItem)?.img ?? '';
-    console.log(endpoint);
     return 'http://cdn.dota2.com' + endpoint;
   };
 
@@ -34,7 +33,7 @@ export default class MatchDetailRow extends React.Component {
             {this.getHeroName(player.hero_id)}
           </Text>
           <Image
-            source={{uri: this.builtHeroIconURI(player.hero_id)}}
+            source={{uri: this.buildHeroIconURI(player.hero_id)}}
             style={styles.icon}
           />
         </View>
