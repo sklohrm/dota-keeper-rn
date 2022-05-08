@@ -28,6 +28,8 @@ export default class App extends React.Component {
     currentScreen: 'Players',
   };
 
+  // Supplies onPress for rows in the Search screen.
+  // state.player and state.currentScreen are updated to reflect the chosen player.
   onSelectPlayer = player => {
     this.setState({
       player: player,
@@ -35,6 +37,8 @@ export default class App extends React.Component {
     });
   };
 
+  // Supplies onPress for rows in the Matches screen.
+  // state.match and state.currentScreen are updated to reflect the chosen match.
   onSelectMatch = match => {
     this.setState({
       match: match,
@@ -42,6 +46,8 @@ export default class App extends React.Component {
     });
   };
 
+  // Supplies the onPress for backButton.
+  // Player and match are reset, and the current screen is updated with a value provided at the call site.
   onPressBackButton = toScreen => {
     this.setState({
       currentScreen: toScreen,

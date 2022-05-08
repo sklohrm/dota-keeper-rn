@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Text, Image, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class SearchRow extends React.Component {
+  //Converts match start time to more compact format.
   convertMatchTime = (time, format) => {
     const date = new Date(time);
 

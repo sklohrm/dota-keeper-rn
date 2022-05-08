@@ -5,6 +5,7 @@ import heroes from 'dotaconstants/build/heroes.json';
 import gameModes from 'dotaconstants/build/game_mode.json';
 
 export default class MatchRow extends React.Component {
+  // Takes the hero_id of player and returns the matching name in heroes.json.
   getHeroName = playerHeroID => {
     return (
       Object.values(heroes).find(hero => hero.id === playerHeroID)
@@ -12,6 +13,7 @@ export default class MatchRow extends React.Component {
     );
   };
 
+  //Takes the match_id of the match and returns the matching name in gameModes.json.
   getGameMode = currentGameMode => {
     return (
       Object.values(gameModes)
@@ -22,24 +24,28 @@ export default class MatchRow extends React.Component {
     );
   };
 
+  // Takes hero_id of player and creates a URI for the image after finding
+  // the appropriate endpoint in heroes.json
   buildHeroIconURI = playerHeroID => {
     endpoint =
       Object.values(heroes).find(hero => hero.id === playerHeroID)?.img ?? '';
     return 'http://cdn.dota2.com' + endpoint;
   };
 
+  //Converts match duration from SS to MM:SS
   secondsToHms = value => {
     return Math.floor(value / 60) + ':' + (value % 60 ? value % 60 : '00');
   };
 
+  //Converts match start time to a more compat format.
   convertMatchTime = (time, format) => {
-    var d = new Date(time * 1000), // Convert the passed timestamp to milliseconds
+    var d = new Date(time * 1000),
       yyyy = d.getFullYear(),
-      mm = ('0' + (d.getMonth() + 1)).slice(-2), // Months are zero based. Add leading 0.
-      dd = ('0' + d.getDate()).slice(-2), // Add leading 0.
+      mm = ('0' + (d.getMonth() + 1)).slice(-2),
+      dd = ('0' + d.getDate()).slice(-2),
       hh = d.getHours(),
       h = hh,
-      min = ('0' + d.getMinutes()).slice(-2), // Add leading 0.
+      min = ('0' + d.getMinutes()).slice(-2),
       ampm = 'AM',
       time;
 
@@ -53,7 +59,6 @@ export default class MatchRow extends React.Component {
       h = 12;
     }
 
-    // ie: 2014-03-24, 3:00 PM
     time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
     return time;
   };
